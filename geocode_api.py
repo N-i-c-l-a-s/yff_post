@@ -42,7 +42,7 @@ def geocode(start, end):
         start_coordinates = data_start["features"][0]["geometry"]["coordinates"]
         end_coordinates = data_end["features"][0]["geometry"]["coordinates"]
 
-        return start_coordinates[0], start_coordinates[1], end_coordinates[0], end_coordinates[1]
+        return start_coordinates[1], start_coordinates[0], end_coordinates[1], end_coordinates[0]
 
     else:
         print(f"Geocoding Error: {response_start.status_code} (Start), {response_end.status_code} (End)")

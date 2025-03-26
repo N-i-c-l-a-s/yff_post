@@ -1,8 +1,8 @@
 import requests
 import json
 api_key = "5b3ce3597851110001cf624892aea1aa581d4df29b49e12c43960ef9"
-def snap_api(start_lon, start_lat, end_lon, end_lat):
-    SNAP_URL = "https://api.openrouteservice.org/v2/snap/driving-car"
+def snap_api(start_lat, start_lon, end_lat, end_lon):
+    SNAP_URL = f"https://api.openrouteservice.org/v2/snap/driving-car"
     body = {"locations": [[start_lon, start_lat], [end_lon, end_lat]]}
     headers = {'Authorization': f'Bearer {api_key}', 'Content-Type': 'application/json'}
     
@@ -20,13 +20,13 @@ def snap_api(start_lon, start_lat, end_lon, end_lat):
             print("Warning: Start location could not be snapped!")
         else:
             snapped_start_lon, snapped_start_lat = snapped_start["location"]
-            print(f"Snapped Start Coordinates: {snapped_start_lon}, {snapped_start_lat}")
+            print(f"Snapped Start Coordinates: {snapped_start_lat}, {snapped_start_lon}")
 
         if snapped_end is None:
             print("Warning: End location could not be snapped!")
         else:
             snapped_end_lon, snapped_end_lat = snapped_end["location"]
-            print(f"Snapped End Coordinates: {snapped_end_lon}, {snapped_end_lat}")
+            print(f"Snapped End Coordinates: {snapped_end_lat}, {snapped_end_lon}")
     
     else:
         print(f"Error: {response.status_code}, {response.text}")

@@ -4,7 +4,7 @@ import json
 import urllib.parse
 
 api_key = "5b3ce3597851110001cf624892aea1aa581d4df29b49e12c43960ef9"
-def distance(start_lon, start_lat, end_lon, end_lat):
+def distance(start_lat, start_lon, end_lat, end_lon):
     url_geocode_end = f"https://api.openrouteservice.org/geocode/search?api_key={api_key}"
     response_end = requests.get(url_geocode_end)
 
@@ -18,6 +18,7 @@ def distance(start_lon, start_lat, end_lon, end_lat):
 
     # Prepare the directions URL (correct longitude, latitude format)
     url_directions = f"https://api.openrouteservice.org/v2/directions/driving-car?api_key={api_key}&start={start_lat},{start_lon}&end={end_lat},{end_lon}"
+
 
 
     headers = {
